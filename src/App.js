@@ -30,6 +30,8 @@ class App extends Component {
           <source src={video} type="video/mp4" />
         </video>
 
+        <a target="_tab" href="https://twitter.com/treytherobot" className="twitter">@treytherobot</a>
+
         <div className="countDown">
           {isReleased ? <h1>
             IT'S OUT!
