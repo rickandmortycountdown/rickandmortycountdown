@@ -2,7 +2,7 @@
   "name": "rick-and-morty-countdown",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://treyhoover.github.io/rick-and-morty-countdown",
+  "homepage": "http://rickandmortycountdown.com",
   "dependencies": {
     "gh-pages": "^1.0.0",
     "moment": "^2.18.1",
