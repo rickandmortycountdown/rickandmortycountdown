@@ -1,7 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body, #root, .App, .AppContent {
+    height: 100%;
+}
+
 .App {
     position: relative;
-    height: 100vh;
     background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.AppHeader {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.AppHeader > * {
+    transition: opacity 150ms ease-in;
+    opacity: 0.5;
+}
+
+.AppHeader > *:hover {
+    opacity: 1;
 }
 
 .App:before {
@@ -13,6 +43,21 @@
     left: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1;
+}
+
+.AppContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.volume {
+    cursor: pointer;
 }
 
 video {
@@ -31,12 +76,7 @@ video {
     font-size: 1.5rem;
     line-height: 1.75;
     color: #01B2C8;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
     text-align: center;
-    transform: translateY(-50%);
     text-shadow: -1px -1px 0 #155C4A,
     1px -1px 0 #155C4A,
     -1px 1px 0 #155C4A,
@@ -45,22 +85,16 @@ video {
     3px -3px 3px #81C051,
     -3px 3px 3px #81C051,
     3px 3px 3px #81C051;
-    z-index: 1;
 }
 
 .twitter {
-    transition: color 150ms ease-in;
     text-decoration: none;
     font-family: sans-serif;
     letter-spacing: normal;
-    color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0.5rem;
-    z-index: 1;
+    color: #fff;
+    /*color: rgba(255, 255, 255, 0.5);*/
 }
 
 .twitter:hover {
-    color: rgba(255, 255, 255, 0.8);
+    /*color: rgba(255, 255, 255, 0.8);*/
 }

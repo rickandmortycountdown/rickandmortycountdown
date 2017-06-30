@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://rickandmortycountdown.com",
   "dependencies": {
+    "bowser": "^1.7.0",
     "gh-pages": "^1.0.0",
     "moment": "^2.18.1",
     "react": "^15.6.1",
