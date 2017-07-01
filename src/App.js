@@ -19,7 +19,7 @@ class App extends Component {
   componentDidMount() {
     this.countdown = setInterval(() => {
       this.forceUpdate();
-    }, 1000);
+    }, 250);
 
     this.videoNode.addEventListener('ended', this.onEnd);
   }
@@ -30,8 +30,44 @@ class App extends Component {
     this.videoNode.removeEventListener('ended');
   }
 
-  get duration() {
+  get remaining() {
     return moment.duration(RELEASE_DATE.diff(moment()));
+  }
+
+  get days() {
+    const d = this.remaining.days();
+
+    if (d <= 0) return "";
+    if (d === 1) return "1 day";
+
+    return `${d} days`;
+  }
+
+  get hours() {
+    const h = this.remaining.hours();
+
+    if (h <= 0) return "";
+    if (h === 1) return "1 hour";
+
+    return `${h} hours`;
+  }
+
+  get minutes() {
+    const m = this.remaining.minutes();
+
+    if (m <= 0) return "";
+    if (m === 1) return "1 minute";
+
+    return `${m} minutes`;
+  }
+
+  get seconds() {
+    const s = this.remaining.seconds();
+
+    if (s <= 0) return "0 seconds";
+    if (s === 1) return "1 second";
+
+    return `${s} seconds`;
   }
 
   toggleMute = () => {
@@ -58,7 +94,7 @@ class App extends Component {
 
   render() {
     const { muted, sunCount } = this.state;
-    const remaining = this.duration;
+    const remaining = this.remaining;
     const isReleased = remaining.asSeconds() <= 0;
     const volumeIcon = muted ? volumeOff : volumeOn;
 
@@ -83,10 +119,11 @@ class App extends Component {
             {isReleased ? <h1>
               IT'S OUT!
             </h1> : <h1>
-              {remaining.days()} {'days '}
-              {remaining.hours()} {'hours '}
-              {remaining.minutes()} {'minutes '}
-              {remaining.seconds()} {'seconds '}
+              {[
+                [this.days, this.hours, this.minutes].filter(Boolean).join(", "), this.seconds]
+                .filter(Boolean)
+                .join(" and ")
+              }
             </h1>}
           </div>
 
