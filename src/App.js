@@ -85,7 +85,10 @@ class App extends Component {
   onEnd = e => {
     this.setState({ sunCount: this.state.sunCount + 1 });
 
-    this.videoNode.play();
+    // wait 3 seconds
+    setTimeout(() => {
+      this.videoNode.play();
+    }, 3000);
   };
 
   bindRef = videoNode => {
